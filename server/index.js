@@ -30,10 +30,6 @@ app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use('/api/users',require('./routes/users'))
 app.use('/api/list',require('./routes/lists'))
 
-app.get('/hello',(req,res)=>{
-    res.json("helloworld");
-})
-
 app.listen(port,()=>{
     console.log('server start');
 })
