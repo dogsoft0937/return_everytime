@@ -12,6 +12,9 @@ const userSchema = mongoose.Schema({
   password: {
     type: String,
   },
+  nickname:{
+    type:String
+  },
   token: {
     type: String,
   },
@@ -68,7 +71,19 @@ userSchema.statics.findByToken = function (token, cb) {
     });
   });
 };
-
+userSchema.statics.getnickname=async function(userId){
+  var res=""
+  await User.findOne({_id:userId}).then((result)=>{
+    if(result){
+      res=result.nickname;
+    }else{
+      res=""
+    }
+  }).catch((err)=>{
+    res=err
+  })
+  return res;
+}
 const User = mongoose.model("User", userSchema);
 
 module.exports = { User };

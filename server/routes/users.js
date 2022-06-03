@@ -9,8 +9,7 @@ router.get("/auth", auth, (req, res) => {
       #swagger.summary = "사용자 인증" */
   res.json({
     loginId: req.user.loginId,
-    name:req.user.name,
-    email: req.user.email,
+    nickname:req.user.nickname,
     _id: req.user._id,
   });
 });
@@ -25,8 +24,7 @@ router.post("/register",(req, res) => {
     } else {
       const user = new User({
         loginId: req.body.loginId,
-        name:req.body.name,
-        email: req.body.email,
+        nickname:req.body.nickname,
         password: req.body.password,
       });
       User.encpass(user.password,(err,hash)=>{

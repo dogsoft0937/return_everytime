@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use('/api/users',require('./routes/users'))
-app.use('/api/list',require('./routes/lists'))
+app.use('/api/community',require('./routes/Community'))
 
 app.listen(port,()=>{
     console.log('server start');
