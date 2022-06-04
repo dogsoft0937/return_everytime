@@ -15,7 +15,7 @@ const commentSchema=mongoose.Schema({
     default:Date.now,
   }
 })
-const heartsSchema=mongoose.Schema({
+const heartSchema=mongoose.Schema({
   userId:{
     type:mongoose.Schema.Types.ObjectId,
     ref:"User",
@@ -47,7 +47,7 @@ const communitySchema = mongoose.Schema({
   },
   images:[{image:String}],
   comments:[commentSchema],
-  hearts:[heartsSchema]
+  hearts:[heartSchema]
 });
 
 communitySchema.methods.updateView = function (cb) {
@@ -57,5 +57,6 @@ communitySchema.methods.updateView = function (cb) {
   return cb();
 };  
 const Community = mongoose.model("Community", communitySchema);
-
-module.exports = { Community };
+const Comment=mongoose.model('Comment',commentSchema);
+const Heart=mongoose.model('Heart',heartSchema);
+module.exports = { Community,Comment,Heart };
